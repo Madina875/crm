@@ -1,0 +1,82 @@
+🧪 PostgreSQL foydali buyruqlar (psql terminalida)
+
+Buyruq	Tavsifi
+\l  	Barcha  ma'lumotlar bazasini ko‘rish
+\c     mydb 	Ma’lumotlar bazasiga ulanish
+\dt	  Jadval  ro'yxati
+\d    users 	Jadval tuzilmasini ko‘rish
+\q
+
+-----------------------------------------------------
+📶 OSI Modeli — 7 Qatlam
+OSI modeli yuqoridan pastga quyidagicha tuzilgan:
+
+Qatlam raqami	Qatlam nomi (Inglizcha)	Qatlam nomi (O‘zbekcha)	Tavsifi
+7	Application	Ilova qatlam	Foydalanuvchi ilovalari (masalan: brauzer, email) bilan bevosita ishlaydi
+6	Presentation	Taqdimot qatlam	Ma’lumot formatlash, shifrlash, dekodlash
+5	Session	Sessiya qatlam	Ulanishni yaratadi, nazorat qiladi va tugatadi
+4	Transport	Transport qatlam	Ma’lumotni bo‘laklarga bo‘ladi, uzatilishini ta’minlaydi (TCP, UDP)
+3	Network	Tarmoq qatlam	IP manzil asosida marshrutlash (routing)
+2	Data Link	Ma’lumotlar bog‘lanishi	MAC manzil orqali kadrlarni uzatish, xatolikni aniqlash
+1	Physical	Fizik qatlam	Kabellar, elektr signal, radio to‘lqinlar — jismoniy uzatish
+---------------------------------------------------------------------------------------------------------------------------
+
+
+TODAY'S LESSON:
+
+foreighn key - tashqi kalit 
+(set default , set...)
+
+--
+[CONSTRAINT fk_name]
+   FOREIGN KEY(fk_columns)
+   REFERENCES parent_table(parent_key_columns) // qaysinga boglash 
+   [ON DELETE delete_action]
+   [ON UPDATE update_action]
+
+--
+
+SET NULL
+SET DEFAULT
+RESTRICT
+NO ACTION
+CASCADE
+
+--
+
+PostgreSQL foreign key constraint examples
+
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS contacts;
+
+CREATE TABLE customers(
+   customer_id INT GENERATED ALWAYS AS IDENTITY,
+   customer_name VARCHAR(255) NOT NULL,
+   PRIMARY KEY(customer_id)
+);
+
+CREATE TABLE contacts(
+   contact_id INT GENERATED ALWAYS AS IDENTITY,
+   customer_id INT,
+   contact_name VARCHAR(255) NOT NULL,
+   phone VARCHAR(15),
+   email VARCHAR(100),
+   PRIMARY KEY(contact_id),
+   CONSTRAINT fk_customer
+      FOREIGN KEY(customer_id)
+        REFERENCES customers(customer_id)
+);
+
+RUN - TABLE REFRESH - AND PROPERTIES ...
+
+---------------------------------------------------
+sayt generatorlari 
+serverlar 
+wordPress
+paying part for eskiz.uz
+serverga git ni deploy qilish (imtihonda t)
+itterm ni deploy qilish 
+server port bir hil bo'lmasligi kk 
+to'xtatib qoyish ham kk 
+--------------------------------------------------
+
