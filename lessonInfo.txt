@@ -71,11 +71,7 @@ RUN - TABLE REFRESH - AND PROPERTIES ...
 
 ---------------------------------------------------
 sayt generatorlari 
-serverlar 
 wordPress
-paying part for eskiz.uz
-serverga git ni deploy qilish (imtihonda t)
-itterm ni deploy qilish 
 server port bir hil bo'lmasligi kk 
 to'xtatib qoyish ham kk 
 --------------------------------------------------
